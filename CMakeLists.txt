@@ -12,7 +12,7 @@ macro(_add_engine_git_module NAME REPO COMMIT)
   FetchContent_Declare(${NAME}
     GIT_REPOSITORY ${REPO}
     GIT_TAG        ${COMMIT}      # exact commit from lockfile
-    GIT_SHALLOW    TRUE
+    GIT_SHALLOW    FALSE
     UPDATE_DISCONNECTED FALSE
   )
   FetchContent_MakeAvailable(${NAME})
@@ -69,7 +69,7 @@ target_link_libraries(WVCore PUBLIC glfw)
 target_include_directories(WVCore PUBLIC ${glfw_SOURCE_DIR}/include)
 
 # Add STB Image
-_add_engine_git_module(STBImage https://github.com/nothings/stb.git f1c79c0)
+_add_engine_git_module(STBImage https://github.com/nothings/stb.git master)
 target_include_directories(WVCore PUBLIC ${stbimage_SOURCE_DIR})
 
 # Add concurrentqueue
